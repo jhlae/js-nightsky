@@ -1,0 +1,72 @@
+body {
+background: #111;
+color: yellow;
+font-family: "Archivo Black";
+font-size: .8em;
+overflow: hidden;
+}
+
+.sky {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  animation: rotateSky 360s linear 0s infinite normal;
+}
+
+.star {
+position: fixed;
+top: auto;
+left: auto;
+width: 1px;
+height: 1px;
+background: #fff;
+border-radius: 99px;
+border: 1px solid #fff;
+}
+
+.move {
+    animation: swing 1s ease-in-out;
+}
+
+.explode {
+  /* -webkit-filter: blur(0px); */
+}
+
+.twinkle {
+    border-radius: 99px;
+    border: 1px solid #fff;
+    animation: twinkle 10s linear 0s infinite normal;
+    -webkit-animation: twinkle 10s linear 0s infinite normal;
+    -moz-animation: twinkle 10s linear 0s infinite normal;
+    -ms-animation: twinkle 10s linear 0s infinite normal;
+    -o-animation: twinkle 10s linear 0s infinite normal;
+}
+
+@-webkit-keyframes twinkle {
+    0%   { -webkit-transform: scale(1.0); opacity: 1; }
+    25%  { -webkit-transform: scale(0.5); opacity: 0.3; }
+    50%  { -webkit-transform: scale(1.0); opacity: 0.5; }
+    75%  { -webkit-transform: scale(0.5); opacity: 0; }
+    100% { -webkit-transform: scale(1.0); opacity: 1; }
+}
+@-moz-keyframes twinkle {
+    0%   { -moz-transform: scale(1.0); opacity: 1; }
+    25%  { -moz-transform: scale(0.5); opacity: 0.3; }
+    50%  { -moz-transform: scale(1.0); opacity: 0.5; }
+    75%  { -moz-transform: scale(0.5); opacity: 0; }
+    100% { -moz-transform: scale(1.0); opacity: 1; }
+}
+
+@keyframes swing {
+    0%   {background-color: red; }
+    90% {background-color: red; }
+    100% {background-color: red;  opacity: 0; color: yellow; border: 0px solid red; }
+}
+
+@keyframes rotateSky {
+    100% { transform: rotate(360deg);}
+}
