@@ -24,9 +24,18 @@ var stars_comets = 1;
 var stars = [0, 100, 2, 20, 0, 1, 3000, 1];
 // ###
 
+
+// Function for creating a random Integer
+function randomInt(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+
+// Create shooting star, 
 function createShootingStar() {
   var id = Math.floor(Math.random() * $(".star").size());
   var pos = $(".star:nth-child(" + id + ")").position();
+  console.log("shooting_star_created");
   var rand_x = Math.floor(Math.random() * 100);
   var rand_y = Math.floor(Math.random() * 100);
   var now_x = Math.floor(pos.left);
@@ -56,7 +65,7 @@ function createShootingStar() {
 
   $(".star").eq(id).playKeyframe({
     name: 'shooting',
-    duration: '1s',
+    duration: randomInt(1,5)+'s', 
     timingFunction: 'ease-in',
     iterationCount: 1,
     direction: 'normal',
@@ -68,6 +77,7 @@ function createShootingStar() {
 }
 
 function createStars() {
+  console.log("created a star");
   if (stars_count < stars_count_max) {
     var rand_top = Math.floor(Math.random() * $(window).height());
     var rand_left = Math.floor(Math.random() * $(window).width());
@@ -78,12 +88,13 @@ function createStars() {
     $('.sky').append('<div class="star" id="' + stars_count + '" style="top:' + rand_top + 'px; left: ' + rand_left + 'px"></div>');
     $('#' + stars_count).addClass('twinkle').css('top', rand_top + 'px').css('left', rand_left + 'px');
     stars_count++;
-    var rand = Math.floor(Math.random());
-    if (rand > stars_shooting_p) {
+    var rand = Math.random();
+    if(rand < stars_shooting_p) {
       createShootingStar();
-    }
+    }    
   }
 }
+
 $(document).ready(function() {
   while (stars_count < initial_stars_count) {
     var rand_top = Math.floor(Math.random() * $(window).height() * 2);
