@@ -1,31 +1,117 @@
 body {
-background: #111;
-color: yellow;
-font-family: "Archivo Black";
-font-size: .8em;
-overflow: hidden;
+    background: #111;
+    color: yellow;
+    overflow: hidden;
+    font-family: "VT323";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body.warp-drive {
+    // animation: acceleration 5s linear 0s infinite normal;
+}
+
+body.red {
+    background: red !important;
+}
+
+
+.horizon {
+    position: fixed;
+    z-index: 2;
+    top: 30%;
+    left: 30%;
+    width: 500px;
+    height: 500px;
+    transform: translateX(-40%) translateY(-40%);
+    border-radius: 100%;
 }
 
 .sky {
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: -1;
-  animation: rotateSky 360s linear 0s infinite normal;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    border: 10%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    border-radius: 100%;
+    z-index: -1;
+    -webkit-animation: rotateSky 360s linear 0s infinite normal;
+    -moz-animation: rotateSky 360s linear 0s infinite normal;
+    -ms-animation: rotateSky 360s linear 0s infinite normal;
+    -o-animation: rotateSky 360s linear 0s infinite normal;
+    animation: rotateSky 360s linear 0s infinite normal;
+}
+
+.sky.warp-drive {
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -ms-animation-duration: 2s;
+    -o-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.info {
+    text-transform: uppercase;
+    font-size: 3rem;
+    padding: 1em;
+}
+
+.power {
+    position: absolute;
+    top: 10em;
+    left: 3em;
+    width: 200px;
+    height: 20px;
+    border: 10px solid yellow;
+    /*transform: skew(-30deg);*/
+    padding: 1em;
+}
+
+.bar {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 100%;
+    height: 100%;
 }
 
 .star {
-position: fixed;
-top: auto;
-left: auto;
-width: 1px;
-height: 1px;
-background: #fff;
-border-radius: 99px;
-border: 1px solid #fff;
+    position: fixed;
+    top: auto;
+    left: auto;
+    width: 1px;
+    height: 1px;
+    background: #fff;
+    border-radius: 99px;
+    border: 1px solid #fff;
+}
+
+.initializing {
+    transition: 0.3s ease-in-out;
+    -webkit-animation: blink 0.1s infinite;
+    -moz-animation: blink 0.1s infinite;
+    -ms-animation: blink 0.1s infinite;
+    -o-animation: blink 0.1s infinite;
+    animation: blink 0.1s infinite;
+    font: 10rem "VT323";
+    color: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border: 5px solid yellow;
+    z-index: 2;
+    width: auto;
 }
 
 .move {
@@ -33,7 +119,7 @@ border: 1px solid #fff;
 }
 
 .explode {
-  /* -webkit-filter: blur(0px); */
+    /* -webkit-filter: blur(0px); */
 }
 
 .twinkle {
@@ -47,26 +133,95 @@ border: 1px solid #fff;
 }
 
 @-webkit-keyframes twinkle {
-    0%   { -webkit-transform: scale(1.0); opacity: 1; }
-    25%  { -webkit-transform: scale(0.5); opacity: 0.3; }
-    50%  { -webkit-transform: scale(1.0); opacity: 0.5; }
-    75%  { -webkit-transform: scale(0.5); opacity: 0; }
-    100% { -webkit-transform: scale(1.0); opacity: 1; }
+    0% {
+        -webkit-transform: scale(1.0);
+        opacity: 1;
+    }
+    25% {
+        -webkit-transform: scale(0.5);
+        opacity: 0.3;
+    }
+    50% {
+        -webkit-transform: scale(1.0);
+        opacity: 0.5;
+    }
+    75% {
+        -webkit-transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        opacity: 1;
+    }
 }
+
 @-moz-keyframes twinkle {
-    0%   { -moz-transform: scale(1.0); opacity: 1; }
-    25%  { -moz-transform: scale(0.5); opacity: 0.3; }
-    50%  { -moz-transform: scale(1.0); opacity: 0.5; }
-    75%  { -moz-transform: scale(0.5); opacity: 0; }
-    100% { -moz-transform: scale(1.0); opacity: 1; }
+    0% {
+        -moz-transform: scale(1.0);
+        opacity: 1;
+    }
+    25% {
+        -moz-transform: scale(0.5);
+        opacity: 0.3;
+    }
+    50% {
+        -moz-transform: scale(1.0);
+        opacity: 0.5;
+    }
+    75% {
+        -moz-transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        -moz-transform: scale(1.0);
+        opacity: 1;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes swing {
-    0%   {background-color: red; }
-    90% {background-color: red; }
-    100% {background-color: red;  opacity: 0; color: yellow; border: 0px solid red; }
+    0% {
+        background-color: red;
+    }
+    90% {
+        background-color: red;
+    }
+    100% {
+        background-color: red;
+        opacity: 0;
+        color: yellow;
+        border: 0px solid red;
+    }
 }
 
 @keyframes rotateSky {
-    100% { transform: rotate(360deg);}
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes speed {
+    0% {
+        transform: scale(1);
+        -webkit-filter: blur(1px);
+    }
+    70% {
+        transform: scale(2);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: inset 0px 0px 160px blue;
+    }
 }
